@@ -1,0 +1,15 @@
+CREATE DATABASE IF NOT EXISTS university_db
+    CHARACTER SET utf8mb4
+    COLLATE utf8mb4_unicode_ci;
+
+USE university_db;
+
+CREATE TABLE IF NOT EXISTS students (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    full_name VARCHAR(120) NOT NULL,
+    email VARCHAR(190) NOT NULL UNIQUE,
+    course VARCHAR(120) NOT NULL,
+    year_of_study TINYINT UNSIGNED NOT NULL,
+    registered_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT chk_year CHECK (year_of_study BETWEEN 1 AND 4)
+);
